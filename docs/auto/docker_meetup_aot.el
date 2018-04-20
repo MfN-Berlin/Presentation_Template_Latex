@@ -16,7 +16,8 @@
     "beamer"
     "beamer10"
     "inputenc"
-    "graphicx")
+    "graphicx"
+    "xcolor")
    (LaTeX-add-xcolor-definecolors
     "mfn_green"))
  :latex)
