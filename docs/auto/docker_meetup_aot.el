@@ -1,6 +1,8 @@
 (TeX-add-style-hook
  "docker_meetup_aot"
  (lambda ()
+   (TeX-add-to-alist 'LaTeX-provided-class-options
+                     '(("beamer" "13pt")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("inputenc" "utf8")))
    (add-to-list 'LaTeX-verbatim-environments-local "semiverbatim")
