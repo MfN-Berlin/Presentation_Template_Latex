@@ -7,3 +7,5 @@ Presentation for the Docker Meetup at MfN
 To build, run ```make```.
 
 Latest version is ```docker_meetup_aot.pdf```
+
+DOI: [10.13140/RG.2.2.10441.85607](http://dx.doi.org/10.13140/RG.2.2.10441.85607)
