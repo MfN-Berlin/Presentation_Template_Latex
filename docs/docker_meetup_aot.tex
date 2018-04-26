@@ -4,36 +4,13 @@
 % 
 % Template:
 % see https://en.wikibooks.org/wiki/LaTeX/Presentations
+% http://ctan.127001.ovh/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+\input{preamble}
 
-\documentclass[12pt]{beamer}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usefonttheme{professionalfonts}
-
-\definecolor{mfn_green}{HTML}{A1BF23}
-\setbeamercolor{title}{fg=black}
-\setbeamerfont{title}{family=\sffamily,series=\bf,size={\fontsize{25}{30}}}
-\setbeamerfont{subtitle}{family=\sffamily,shape=\itshape,size={\fontsize{20}{25}}}
-
-\setbeamerfont{frametitle}{family=\sffamily,size={\fontsize{18}{22}}}
-\setbeamercolor{frametitle}{fg=black}
-
-\beamertemplatenavigationsymbolsempty
-\setbeamertemplate{footline}[page number]
-
-\setbeamertemplate{itemize item}{\color{mfn_green}$\blacktriangleright$}
-
-\setbeamertemplate{caption}{\scriptsize\insertcaption}
-\setbeamersize{text margin left=5mm,text margin right=5mm}
-
-\title
-{Running wikis at the Museum with Docker}
+\title{Running wikis at the Museum with Docker}
 \subtitle{past, present and future}
-\author
-{Alvaro Ortiz-Troncoso}
-\date
-{Docker Meetup at Museum für Naturkunde Berlin, 2018}
+\author{Alvaro Ortiz-Troncoso}
+\date{Docker Meetup at Museum für Naturkunde Berlin, 2018}
 \subject{Computer Science}
 
 \begin{document}
@@ -41,10 +18,13 @@
 %----------------------------------------------------------------------------------------------%
 % 1. Titelseite
 {
+  \setbeamertemplate{footline}{}
+  {
   \logo{\includegraphics[height=1cm]{mfn_logo_klein.png}\vspace{220pt}}
   \frame{\titlepage}
+  }
 }
-
+\addtocounter{framenumber}{-1}
 %----------------------------------------------------------------------------------------------%
 % 2. Das Museum
 \begin{frame}
@@ -58,7 +38,7 @@
 {\scriptsize
 \begin{frame}
   \frametitle{Das Museum / \textcolor{mfn_green}{The Museum}}
-  Dieser Vortrag handelt von unsere Erfahrung mit der Kombination von Docker und Wikis am Museum. Zuerst werde ich kurz sprechen über was wir am Museum tun, und über wie wir es tun. Das Museum ist ein sehr dynamisches Umfeld, und hier zu arbeiten ist vielleicht anders, als die meisten Aussenstehenden sich das vorstellen. Danach werde ich über Wikis und Docker sprechen. Ich werde die Gründe durchnehmen, wieso wir uns für Docker entschieden haben, sowohl organisatorisch als auch technisch. Schließlich werde ich über unsere Zukunftspläne sprechen. Besonders darüber freue ich mich über Feedback, Anregungen, Kritik und Ideen.\\
+  Dieser Vortrag handelt von unserer Erfahrung mit der Kombination von Docker und Wikis am Museum. Zuerst werde ich kurz sprechen über was wir am Museum tun, und über wie wir es tun. Das Museum ist ein sehr dynamisches Umfeld, und hier zu arbeiten ist vielleicht anders, als die meisten Aussenstehenden sich das vorstellen. Danach werde ich über Wikis und Docker sprechen. Ich werde die Gründe durchnehmen, wieso wir uns für Docker entschieden haben, sowohl organisatorisch als auch technisch. Schließlich werde ich über unsere Zukunftspläne sprechen. Besonders darüber freue ich mich über Feedback, Anregungen, Kritik und Ideen.\\
   \bigskip
   \textcolor{mfn_green}{This talk is about our experience with combining Docker and wikis at the Museum. First I'll talk shortly about what we do at the Museum, and how we do it. The Museum is a very dynamic environment, and working here is probably very different from what most people imagine. Then I'll talk about running wikis with Docker. I'll go into the reasons for adopting Docker, both organisational and technical. Finally, I'll talk about plans for the future. Particularly regarding our plans, I'm very interested in hearing your feedback, criticism, and ideas.}
 \end{frame}
@@ -98,13 +78,13 @@ Die meisten Personen denken, dass das Museum und die Ausstellung gleichzusetzen 
   \item{\textcolor{mfn_green}{Currently 51 projects are researching the collection}}
   \end{itemize}
   \bigskip
-  \begin{center}\fontsize{5pt}{7}{Unsere Wissenschaft / Our Science, DOI: 10.7479/3dwq-8a7g}\end{center}
+  \begin{center}\scriptsize{Unsere Wissenschaft / Our Science, DOI: 10.7479/3dwq-8a7g}\end{center}
 \end{frame}
 
 {\scriptsize
 \begin{frame}
   \frametitle{ Einige Zahlen / \textcolor{mfn_green}{Some numbers}}
-  Fast 500 Personen arbeiten im Museum: WissenschaftlerInnen, StudentInnen, Labor TechnikerInnen, EntwicklerInnen und so weiter. Wie in jedem Wissenschaftsinstitut kann die Produktion an der Menge der Publikationen gemessen werden. Mit Publikationen sind hier sowohl wissenschaftliche Artikel in spezialisierten Zeitschriften als Ausstellungskataloge und so weiter gemeint. Zur Zeit sind 51 Forschungsprojekte am Museum aktiv, und erforschen die Sammlung, die Forschung an der Sammlung und die Forschung an der Forschung an der Sammlung.\\
+  Fast 500 Personen arbeiten im Museum: WissenschaftlerInnen, StudentInnen, Labor TechnikerInnen, EntwicklerInnen und so weiter. Wie in jedem Wissenschaftsinstitut kann die Produktion an der Menge der Publikationen gemessen werden. Mit Publikationen sind hier sowohl wissenschaftliche Artikel in spezialisierten Zeitschriften als Ausstellungskataloge und so weiter gemeint. Zur Zeit sind 51 Forschungsprojekte am Museum aktiv, und erforschen die Sammlung, die Forschung an der Sammlung, die Forschung an der Forschung an der Sammlung...\\
   \bigskip  
   \textcolor{mfn_green}{Almost 500 persons work at the museum, including scientists, students, lab technicians, software developers and so on. As in any science institution, output can be measured by the number of publications. These include science publications but also books and articles in magazines. There are currently 51 projects researching the collection, or researching the scientists working on the collection, on the research on the research on the collection.}
 \end{frame}
@@ -122,7 +102,7 @@ Die meisten Personen denken, dass das Museum und die Ausstellung gleichzusetzen 
 {\scriptsize
 \begin{frame}
   \frametitle{Forschungsprojekte / \textcolor{mfn_green}{Research projects}}
-  Hier sind einige Beispiele von Forschungsprojekte: im Museum sind mehrere Labore untergebracht, wo verschiedene Arten von Forschung betrieben wird, zum Beispiel zu Genetik. Das Museum benutzt 3D-Scanners um die Sammlung zu digitalisieren. Das Museum ist auch in ökologische Projekte involviert, zum Beispiel zur Biodiversitätsforschung in besonders interessante Gebiete. Geologen am Museum erforschen die Folgen von Meteoriteneinschläge und benutzen dazu Computersimulationen. Das Museum hat ein App entwickelt, das im App-Store heruntergeladen werden kann, das bei der Bestimmung von Pflanzen und Vogestimmen helfen kann. Diese sind fast zufällig ausgewählte Projekte auf unsere Webseite.\\
+  Hier sind einige Beispiele von Forschungsprojekte: im Museum sind mehrere Labore untergebracht, wo verschiedene Arten von Forschung betrieben wird, zum Beispiel zu Genetik. Das Museum benutzt 3D-Scanners um die Sammlung zu digitalisieren. Das Museum ist auch in ökologische Projekte involviert, zum Beispiel zur Biodiversitätsforschung in besonders interessante Gebiete. Geologen am Museum erforschen die Folgen von Meteoriteneinschläge und benutzen dazu Computersimulationen. Das Museum hat ein App entwickelt, das bei der Bestimmung von Pflanzen und Vogestimmen helfen kann. Diese sind fast zufällig ausgewählte Projekte auf unsere Webseite.\\
   \bigskip
   \textcolor{mfn_green}{Here are some examples of research projects: the Museum hosts a number of laboratories, where research is carried out in many fields, such as genetics. The Museum is using 3D-scanners to digitise the collection. The Museum is also involved in ecological projects, for example in mapping the biological diversity in specially interesting region. Geologists at the Museum are modelling planetary impacts, and meteorites. The Museum also developed an App, that can be downloaded from the App-Store, that helps to identify birds by song and plants using a mobile phone. These are just a few almost randomly chosen examples of projects on our Website.}
 \end{frame}
@@ -144,9 +124,9 @@ Die meisten Personen denken, dass das Museum und die Ausstellung gleichzusetzen 
 {\scriptsize
 \begin{frame}
   \frametitle{Was macht ein Projekt aus? \\ \textcolor{mfn_green}{What does it take to launch a project?}}
-  Einerseits soll das Museum die Sammlung konservieren und kuratieren, für die Ewigkeit. Andererseits, passieren hier all diese aufregende, dynamische Dinge. Das ist möglich, weil wir in Projekte arbeiten. Ein Projekt brauch im Grunde genommen nur 3 Dinge: Finanzierung, Zeitplan (Projekte haben einen Anfang und ein Ende) und Team. Forschungsteams am Museum bestehen typischerweise aus Wissenschaftler und Mitarbeiter aus verschiedenen Disziplinen, wie zum Beispiel Software-EntwicklerInnen, System-Administratoren, Projektmanagers, Designer, Fotografen, LabortechnikerInnen usw.\\
+  Einerseits soll das Museum die Sammlung konservieren und kuratieren, für die Ewigkeit. Andererseits, passieren hier all diese aufregende, dynamische Dinge. Das ist möglich, weil wir in Projekten arbeiten. Ein Projekt brauch im Grunde genommen nur 3 Voraussetzungen: Finanzierung, Zeitplan (Projekte haben einen Anfang und ein Ende) und Team. Forschungsteams am Museum bestehen typischerweise aus Wissenschaftler und Mitarbeiter aus verschiedenen Disziplinen, wie zum Beispiel Software-EntwicklerInnen, System-Administratoren, Projektmanagers, Designer, Fotografen, LabortechnikerInnen usw.\\
   \bigskip
-  \textcolor{mfn_green}{On the one hand, the Museum is meant to preserve and curate the collection, forever. On the other hand, we do all this exiting, dynamic stuff. This is possible because our work is organised in research projects. A project basically needs 3 things: funding, a time plan (a project has a beginning and an end), and most importantly a team. Research teams at the Museum often include a researcher and collaborators from many different fields, such a software developers, system administrators, management people, designers or photographers, lab technicians and so on.}
+  \textcolor{mfn_green}{On the one hand, the Museum is meant to preserve and curate the collection, forever. On the other hand, we do all this exiting, dynamic stuff. This is possible because our work is organised in research projects. A project has 3 basic needs: funding, a time plan (a project has a beginning and an end), and most importantly a team. Research teams at the Museum often include a researcher and collaborators from many different fields, such a software developers, system administrators, management people, designers or photographers, lab technicians and so on.}
 \end{frame}
 }
 %----------------------------------------------------------------------------------------------%
@@ -170,7 +150,7 @@ Die meisten Personen denken, dass das Museum und die Ausstellung gleichzusetzen 
 {\scriptsize
 \begin{frame}
   \frametitle{Kooperation / \textcolor{mfn_green}{Cooperation}}
-  Kooperation ist nötig aus mindestens drei Gründe: ein Team, das aus Mitarbeitern mit verschiedenen Hintergründe und Spezialisierungen besteht, muss zu einem gemeinsamen Verständnis kommen, was die Ziele des Projekts sind. Zum Beispiel kann "Erfolg" für einem Wissenschaftler was völlig anderes sein als "Erfolg" für einen Manager. Kooperation ist auch nötig, um das Zeitplan einzuhalten. Jeder, der an einem Projekt gearbeitet hat, weißt, das die Zeit nie reicht. Kooperation ist aber auch nötig, um innerhalb des Kostenrahmens zu bleiben, denn wer kooperiert arbeitet auch effizienter.\\
+  Kooperation ist nötig aus mindestens drei Gründe: ein Team, das aus Mitarbeitern mit verschiedenen Hintergründe und Spezialisierungen besteht, muss zu einem gemeinsamen Verständnis kommen, was die Ziele des Projekts sind. Zum Beispiel kann "Erfolg" für einem Wissenschaftler was völlig anderes sein als "Erfolg" für einen Manager. Kooperation ist auch nötig, um das Zeitplan einzuhalten. Jeder, der an einem Projekt gearbeitet hat, weiß, das die Zeit nie reicht. Kooperation ist aber auch nötig, um innerhalb des Kostenrahmens zu bleiben, denn wer kooperiert arbeitet auch effizienter.\\
   \bigskip
   \textcolor{mfn_green}{Cooperation is necessary for at least 3 reasons: a team that is made of persons coming from different fields and specialities, needs to come to a common understanding of what it is they wish to achieve. For example, "success" for a scientist might be something totally different than "success" for a manager. Cooperation is also necessary to deliver on time. As anybody who has worked on a project can tell, there is never enough time. Cooperation is also necessary to work efficiently and deliver within budget.}
 \end{frame}
@@ -260,7 +240,7 @@ Früher war Kooperation durch hin-und-her schicken von Papierunterlagen geprägt
 {\scriptsize
 \begin{frame}
   \frametitle{Konkretes Beispiel: das Panda-Wiki\\\textcolor{mfn_green}{A specific example: the Panda wiki}}
-  Aus diesen Gründen hat das Museum entschieden, eine Kooperationsumgebung aufzusetzen. Als ich am Museum in 2014 angefangen habe, war mein erster Auftrag mit Wikis zu experimentieren, um eine Kooperationsumgebung zu schaffen. Heutzutage gibt es 24 Wikis am Museum. Hier ist ein Beispiel: das Wiki der Panda Ausstellung. Dieses Wiki ist interessant weil es alle Stadien eines Projetkzyklus durchlaufen hat. Während der Planung der Ausstellung wurde das Wiki benutzt, um die Texte der Ausstellung zu schreiben, und um Materialien zu sammeln für das Ausstellungskatalog. Während der Ausstellung (2015), wurde das Wiki veröffentlicht und diente als Ausstellungswebseite. Nach der Ausstellung dient das Wiki als Ausstellungsarchiv. \\
+  Aus diesen Gründen hat das Museum entschieden, eine Kooperationsumgebung aufzusetzen. Als ich am Museum in 2014 angefangen habe, war mein erster Auftrag mit Wikis zu experimentieren, um eine Kooperationsumgebung zu schaffen. Heutzutage gibt es 24 Wikis am Museum. Hier ist ein Beispiel: das Wiki der Panda Ausstellung. Dieses Wiki ist interessant weil es alle Stadien eines Projektzyklus durchlaufen hat. Während der Planung der Ausstellung wurde das Wiki benutzt, um die Texte der Ausstellung zu schreiben, und um Materialien für das Ausstellungskatalog zu sammeln. Während der Ausstellung (2015), wurde das Wiki veröffentlicht und diente als Ausstellungswebseite. Nach der Ausstellung dient das Wiki als Ausstellungsarchiv. \\
   \bigskip
   \textcolor{mfn_green}{For these reasons, the Museum decided to set up a cooperation environment. When I joined the Museum in 2014, my first job was to experiment with wikis to create such an environment. There are currently 24 wikis at the Museum, here is an example: the wiki of the Panda exhibition. This wiki is interesting because it went through the life-cycle of a whole project: during project planing, it was used to write texts for the labels in the exhibition, and to gather material for the exhibition catalogue. During the exhibition (2015), it was made public and was used as exhibition website. After the exhibition, the wiki can now be used as exhibition archive.}
 \end{frame}
@@ -286,7 +266,7 @@ Früher war Kooperation durch hin-und-her schicken von Papierunterlagen geprägt
 {\scriptsize
 \begin{frame}
   \frametitle{Wikis am Museum / \textcolor{mfn_green}{Wikis at the Museum}}
-Forschungsprojekte am Museum können ein Wiki benutzen, wenn sie das wünschen. Obwohl Projekte im Museum sehr verschieden sein können, haben die Wikis dennoch gemeinsame Anforderungen. Die Zwei wichtigste Anforderungen sind: die Wikis sind standardmäßig privat. WissenschaftlerInnen sind manchmal abgeneigt, Forschungsergebnisse zu teilen, bevor diese in einer wissenschaftlichen Zeitschrift publiziert worden sind. Die zweite wichtige Anfordeung ist, dass die Wikis semantisch sein sollen. Das heißt, dass unsere Wikis nicht nur mit Freiformtexte umgehen können, sondern auch mit strukturierten Daten. Informationen im Wiki können so auf verschiedene Art und Weise durchsucht werden, was ihre Nützlichkeit steigert.\\
+Forschungsprojekte am Museum können ein Wiki benutzen, wenn sie das wünschen. Obwohl Projekte sehr verschieden sein können, haben die Wikis dennoch gemeinsame Anforderungen. Die Zwei wichtigste Anforderungen sind: die Wikis sind standardmäßig privat. WissenschaftlerInnen sind manchmal abgeneigt, Forschungsergebnisse zu teilen, bevor diese in einer wissenschaftlichen Zeitschrift publiziert worden sind. Die zweite wichtige Anfordeung ist, dass die Wikis semantisch sein sollen. Das heißt, dass unsere Wikis nicht nur mit Freiformtexte umgehen können, sondern auch mit strukturierten Daten. Informationen im Wiki können so auf verschiedene Art und Weise durchsucht werden, was ihre Nützlichkeit steigert.\\
   \bigskip
   \textcolor{mfn_green}{Research projects at the Museum may use a wiki to support collaboration within a team, if they wish to do so. Although projects at the Museum can be of very different kinds, the wikis have some requirements in common. Two important requirements are: wikis are by default private. Scientists are sometimes reluctant to share their data and results before their research has been published in an academic journal. The second important requirement is that wikis should be semantic. This means that our wikis are capable of storing free-form texts, in a similar way than Wikipedia can deal with texts, but can also store structured data. Information in the wiki can then be queried in various ways, and that increases value of the information stored in the wiki.}
 \end{frame}
@@ -303,7 +283,7 @@ Forschungsprojekte am Museum können ein Wiki benutzen, wenn sie das wünschen. 
 {\scriptsize
 \begin{frame}
   \frametitle{Die derzeitige Praxis / \textcolor{mfn_green}{The current practice}}
-  Zusammengefasst, um Projekte zu betreiben ist Kooperation gefragt. Kooperation muss von einer Kooperationsumgebung unterstützt werden. Um eine Kooperationsumgebung aufzusetzen werden eine Infrastruktur und Prozesse benötigt. Ich werde die Details des Prozess in der nächsten Slide zeigen, und auch auf die Probleme eingehen, die dieses Prozess mit sich bringt. Diese Art von Arbeit hat dennoch ein großes Vorteil: eine deutliche Trennung von den Belangen und Verantwortlichkeiten zwischen EntwicklerInnen und Admins. Admins sind Museumsangestellte, und sie können sich auf das Ausbauen einer Infrastruktur konzentrieren. EntwicklerInnen sind temporäre Projektangestellte, manchmal sogar externe Mitarbeiter, und sie können sich darauf konzentrieren, ihr Projekt voranzutreiben.\\
+  Zusammengefasst, um Projekte zu betreiben ist Kooperation gefragt. Kooperation muss von einer Kooperationsumgebung unterstützt werden. Um eine Kooperationsumgebung aufzusetzen werden eine Infrastruktur und Prozesse benötigt. Ich werde die Details des Prozesses in der nächsten Slide zeigen, und auch auf die Probleme eingehen, die dieser Prozesses mit sich bringt. Diese Art von Arbeit hat dennoch ein großes Vorteil: eine deutliche Trennung von den Belangen und Verantwortlichkeiten zwischen EntwicklerInnen und Admins. Admins sind Museumsangestellte, und sie können sich auf das Ausbauen einer Infrastruktur konzentrieren. EntwicklerInnen sind Projektangestellte, manchmal sogar externe Mitarbeiter, und sie können sich darauf konzentrieren, ihr Projekt voranzutreiben.\\
   \bigskip
   \textcolor{mfn_green}{In a nutshell, running projects requires cooperation. Cooperation has to be supported by a cooperation environment. Setting up a cooperation environment requires software infrastructure and processes. I'll go into more detail on the steps of this process on the next slide, and also into the problems this process has. Doing things this way has a very important advantage: a clear separation of concerns and responsibilities between the system administrators and the developers. System administrators are Museum staff, and they can concentrate on building the Museum's infrastructure, which is what they do best. Developers are temporary project staff or external contractors, and they can concentrate on pushing their project forward.}
 \end{frame}
@@ -363,15 +343,15 @@ Forschungsprojekte am Museum können ein Wiki benutzen, wenn sie das wünschen. 
 \begin{frame}
   \frametitle{Lösungsansatz / \textcolor{mfn_green}{Planed solution}}
   \begin{figure}
-    \includegraphics[width=\textwidth]{docker_wikis_integration.png}
+    \includegraphics[height=70mm]{docker_wikis_integration.png}
+    \caption{\textcolor{mfn_blue}{NOTE: Edited to reflect ideas brought up by Meetup participants.}}
   \end{figure}
-  \textcolor{mfn_green}{NOTE: I edited the solution to reflect ideas brought up by Meetup participants during the discussion after the presentation.}
 \end{frame}
 
 {\scriptsize
 \begin{frame}
   \frametitle{Lösungsansatz / \textcolor{mfn_green}{Planed solution}}
-  Meine Priorität ist, um das Rollout zu optimieren. Ich will die Testumgebung durch Continuous Integration ersetzen. Continuous Integration aufzusetzen kann viel Arbeit bedeuten, aber jeder, der damit gearbeitet hat kann bezeugen, dass es sich am Ende lohnt. Continuous Integration automatisiert der Rollout-Prozess, macht testen transparent und wenn es einmal steht, ist sehr einfach zu bedienen. Mein jetziger Plan ist es, um GitLab-CI zu benutzen, um die Continuous Integration Pipeline zu steuern. Test-Werkzeuge und -Data wird in einem Test-Container verpackt. Die Tests können mit Selenium gesteuert weden. Wenn die Tests erfolgreich sind, können die neuen Images in der Produktivumgebung automatisch eingesetzt werden.\\
+  Ich will die Testumgebung durch Continuous Integration ersetzen. Continuous Integration aufzusetzen kann viel Arbeit bedeuten, aber jeder, der damit gearbeitet hat kann bezeugen, dass es sich am Ende lohnt. Continuous Integration automatisiert der Rollout-Prozess, macht testen transparent und wenn es einmal steht, ist sehr einfach zu bedienen. Mein jetziger Plan ist es, um GitLab-CI zu benutzen, um die Continuous Integration Pipeline zu steuern. Test-Werkzeuge und -Data werden in einem Test-Container verpackt. Die Tests können mit Selenium gesteuert weden. Wenn die Tests erfolgreich sind, können die neuen Images in der Produktivumgebung automatisch eingesetzt werden.\\
   \bigskip
   \textcolor{mfn_green}{My current priority is to streamline the roll-out process, by getting rid of the test environment and replacing it with continuous integration. Setting up continuous integration can be a lot of effort, but as anyone who has worked with continuous integration can tell, it is effort well spent. Continuous integration automates the roll-out process, renders testing more transparent, and once it is set up, it is just a mater of submit-and-forget. I am currently planing to use GitLab-CI to build the continuous integration pipeline. Test tools and data will be provided by a test container. The tests can then run in Selenium. If the tests pass, the new images would be deployed to the production environment.}
 \end{frame}

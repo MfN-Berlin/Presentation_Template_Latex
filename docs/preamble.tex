@@ -1,0 +1,36 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+\documentclass[12pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[sfdefault]{roboto}
+
+\definecolor{mfn_green}{HTML}{A1BF23}
+\definecolor{mfn_blue}{RGB}{0, 153, 187}
+
+%\renewcommand{\sfdefault}{\roboto}
+%\renewcommand{\familydefault}{\sfdefault}
+
+\setbeamercolor{title}{fg=black}
+\setbeamerfont{title}{series=\bf,size={\fontsize{25}{30}}}
+
+\setbeamerfont{subtitle}{shape=\itshape,size={\fontsize{20}{25}}}
+\setbeamerfont{frametitle}{size={\fontsize{18}{22}}}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{footline}{fg=gray}
+\beamertemplatenavigationsymbolsempty
+%\setbeamertemplate{footline}[page number]
+\setbeamertemplate{itemize item}{\color{mfn_green}$\blacktriangleright$}
+\setbeamertemplate{caption}{\scriptsize\insertcaption}
+\setbeamersize{text margin left=5mm,text margin right=7mm}
+\setlength\abovecaptionskip{-5pt}
+\setbeamertemplate{footline}{
+  \mbox{\hspace{1em}\insertshorttitle}
+  \newline\smallskip\newline
+  \mbox{\hspace{1em}\insertshortauthor \textbar Museum für Naturkunde Berlin – Leibniz-Institut für Evolutions- und Biodiversitätsforschung}
+  \newline\smallskip\newline
+}
