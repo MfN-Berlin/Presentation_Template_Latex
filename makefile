@@ -1,5 +1,5 @@
-# the name of the article file (without extension)
-ARTICLE = docker_meetup_aot
+# the name of the presentation file (without extension)
+ARTICLE = presentation
 
 all: prepare
 	cd temp && pdflatex $(ARTICLE).tex
@@ -9,9 +9,10 @@ all: prepare
 # copy all files required by latex to the temp dir
 prepare:
 	mkdir -p temp
-	cp -r docs/* temp
+	cp -r tex/* temp
 	-cp -r templates/* temp
 	-cp -r figures/* temp
+	-cp -r tables/* temp
 
 # cleanup output and temp files
 clean:

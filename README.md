@@ -1,11 +1,10 @@
-# Presentation_Docker_Meetup
-Presentation for the Docker Meetup at MfN
+LaTeX template for making presentation in MfN style.
 
+# requirements
 * Requires a LaTeX distribution, e.g. [texlive](https://www.tug.org/texlive/).
-* [Install Trade Gothic opentype font](https://tex.stackexchange.com/questions/88423/manual-font-installation).
 
-To build, run ```make```.
-
-Latest version is ```docker_meetup_aot.pdf```
-
-DOI: [10.13140/RG.2.2.10441.85607](http://dx.doi.org/10.13140/RG.2.2.10441.85607)
+# Usage
+1. Fork this project, using the "fork" button in GitLab or GitHub.
+2. Edit the file tex/presentation.tex to make your presentation.
+3. To build, run ```make```.
+4. The finished presentation will be stored in presentation.pdf (in the root directory of the project)
