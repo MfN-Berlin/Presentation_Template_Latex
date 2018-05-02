@@ -1,4 +1,4 @@
-LaTeX template for making presentation in MfN style.
+LaTeX template for making presentation in MfN style. See e.g. (blob/master/presentation.pdf)[presentation.pdf].
 
 # requirements
 * Requires a LaTeX distribution, e.g. [texlive](https://www.tug.org/texlive/).
